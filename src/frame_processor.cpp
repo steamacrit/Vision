@@ -48,8 +48,6 @@ void FrameProcessor::Process(FrameProcessor * p_processor)
     if (p_processor == 0)
         return;
 
-//    double offset = 0.0;
-//	double needed_angle = 0.0;
     int width = p_processor->_width;
     int height = p_processor->_height;
     double target_center = 0.0;
@@ -148,6 +146,6 @@ void FrameProcessor::Process(FrameProcessor * p_processor)
             imshow("Track", drawing);
             cv::waitKey(1);
         }
-	}
+    }
 }
 
