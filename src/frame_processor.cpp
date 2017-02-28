@@ -52,7 +52,7 @@ void FrameProcessor::Process(FrameProcessor * p_processor)
     int height = p_processor->_height;
     double target_center = 0.0;
     double target_angle = 0.0;
-	double half = (width -1) / 2;
+    double half = (width -1) / 2;
     double angle = FOV / width;
 
     cv::Scalar lowerb = cv::Scalar(LOW_H, LOW_L, LOW_S);
@@ -61,13 +61,13 @@ void FrameProcessor::Process(FrameProcessor * p_processor)
     cv::Scalar contour_color = cv::Scalar(255, 255, 255);
     cv::Scalar bounds_color = cv::Scalar(0, 0, 255);
 
-	while (p_processor->_exit == false)
-	{
+    while (p_processor->_exit == false)
+    {
         bool show_track = p_processor->_show_track;
         bool active_track = false;
 
-		cv::Mat thresholded_frame = p_processor->_p_frame_queue->pop();
-		cv::inRange(thresholded_frame, lowerb, upperb, thresholded_frame); //Threshold the image
+	cv::Mat thresholded_frame = p_processor->_p_frame_queue->pop();
+	cv::inRange(thresholded_frame, lowerb, upperb, thresholded_frame); //Threshold the image
 
         // FIND CONTOURS
         std::vector<std::vector<cv::Point> > contours;
