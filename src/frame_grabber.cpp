@@ -54,25 +54,25 @@ void FrameGrabber::Grab(FrameGrabber * p_grabber)
 
     bool show_camera = p_grabber->_show_camera;
 
-	cv::VideoCapture cap(CAMERA_DEVICE); //capture the video from webcam
+    cv::VideoCapture cap(CAMERA_DEVICE); //capture the video from webcam
 
 
-	if (!cap.isOpened())  // if not success, exit program
-	{
-		std::cout << "Cannot open the web cam" << std::endl;
-		return;
-	}
+    if (!cap.isOpened())  // if not success, exit program
+    {
+ 	std::cout << "Cannot open the web cam" << std::endl;
+	return;
+    }
 
 
     cap.set(CV_CAP_PROP_FRAME_WIDTH, p_grabber->_width);
     cap.set(CV_CAP_PROP_FRAME_HEIGHT, p_grabber->_height);
     //	cap.set(CV_CAP_PROP_EXPOSURE, -8);
-	cap.set(CV_CAP_PROP_BRIGHTNESS, BRIGHTNESS);
+    cap.set(CV_CAP_PROP_BRIGHTNESS, BRIGHTNESS);
 
     cv::Size frame_size(p_grabber->_width, p_grabber->_height);
 
-	while (p_grabber->_exit == false)
-	{
+    while (p_grabber->_exit == false)
+    {
         cv::Mat frame;
         cap.read(frame);
         cv::resize(frame, frame, frame_size);
@@ -85,5 +85,5 @@ void FrameGrabber::Grab(FrameGrabber * p_grabber)
 
         cv::cvtColor(frame, frame, cv::COLOR_BGR2HLS);
         p_grabber->_p_frame_queue->push(frame);
-	}
+    }
 }
