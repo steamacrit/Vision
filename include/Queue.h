@@ -5,6 +5,10 @@
 //
 //
 // Modified by James Simpson 02/25/2017
+// - modified to allow the user to specify a max number of items in queue.
+// -- if max_items_ = 0 then there is not limit
+// -- if max_items_ > 0 then only max_items_ are allowed in the queue.
+// --- when max_items_ has been reached pop() is called prior to pushing the new item.
 //
 
 #ifndef QUEUE_H_INCLUDED
